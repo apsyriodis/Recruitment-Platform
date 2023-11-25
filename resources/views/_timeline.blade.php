@@ -3,7 +3,7 @@
 
     <div class="timeline-container">
         @foreach ($timelines as $timeline)
-            <div>
+            <div @if ($loop->first) class="mt-4" @endif>
                 <h5><strong>Recruiter:</strong>
                     {{ $timeline->recruiter_name . ' ' . $timeline->recruiter_surname }}</h5>
                 <h5><strong>Candidate:</strong>
@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 @if (!$loop->last)
-                    <hr class='mb-5'>
+                    <hr class='my-5'>
                 @endif
         @endforeach
     </div>
@@ -59,6 +59,7 @@
         .step {
             text-align: center;
             position: relative;
+            flex: 1;
         }
 
         .circle {
@@ -81,8 +82,15 @@
             border-color: #4CAF50;
         }
 
-        .step:last-child .line {
-            display: none;
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 65%;
+            width: calc(70% - 20px);
+            height: 2px;
+            background-color: #000;
+            transform: translateY(-50%);
         }
     </style>
 @endsection
