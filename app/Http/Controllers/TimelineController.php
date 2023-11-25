@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Collections\TimelineCollection;
 use App\Models\Timeline;
 use App\Resources\TimelineResource;
 use Illuminate\Http\Request;
 
 class TimelineController extends Controller
 {
-    public function index(int $per_page = 8)
+    public function index()
     {
-        $timelines = Timeline::paginate($per_page);
+        $timelines = Timeline::all();
 
-        return new TimelineCollection($timelines);
+        return view('index', ['timelines' => $timelines]);
     }
 
     public function store(Request $request)
