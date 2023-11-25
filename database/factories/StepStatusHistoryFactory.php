@@ -13,9 +13,6 @@ class StepStatusHistoryFactory extends Factory
 
     public function definition(): array
     {
-        return [
-            'step_id' => Step::factory()->create()->id,
-            'status_category' => StatusCategory::PENDING,
-        ];
+        return [];
     }
 }
