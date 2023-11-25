@@ -30,7 +30,7 @@ class Step extends Model
 
     public function getCurrentStatusAttribute(): string
     {
-        return $this->statuses
+        return $this->statuses()
             ->latest()
             ->first()
             ->status_category;
