@@ -3,14 +3,19 @@
 namespace Tests\Feature;
 
 use App\Enums\StatusCategory;
+use App\Enums\StepCategory;
 use App\Models\Step;
+use App\Models\Timeline;
 use Tests\TestCase;
 
 class StepStatusHistoryFeatureTest extends TestCase
 {
     public function test_can_store_a_new_status()
     {
-        $step_id = Step::factory()->create()->id;
+        $step_id = Step::factory()->create([
+            'timeline_id' => Timeline::factory()->create()->id,
+            'step_category' => StepCategory::FIRST_INTERVIEW->value,
+        ])->id;
 
         $payload = [
             'step_id' => $step_id,
