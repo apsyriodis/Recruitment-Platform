@@ -14,6 +14,10 @@ class Step extends Model
         'step_category',
     ];
 
+    protected $appends = [
+        'current_status',
+    ];
+
     public function timeline()
     {
         return $this->belongsTo(Timeline::class);
@@ -22,5 +26,13 @@ class Step extends Model
     public function statuses()
     {
         return $this->hasMany(StepStatusHistory::class);
+    }
+
+    public function getCurrentStatusAttribute(): string
+    {
+        return $this->statuses
+            ->latest()
+            ->first()
+            ->status_category;
     }
 }
