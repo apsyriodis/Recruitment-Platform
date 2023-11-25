@@ -16,8 +16,29 @@ class Timeline extends Model
         'recruiter_surname',
     ];
 
+    protected $appends = [
+        'current_status',
+        'step_category',
+    ];
+
     public function steps()
     {
         return $this->hasMany(Step::class);
+    }
+
+    public function getCurrentStatusAttribute(): ?string
+    {
+        return $this->steps()
+            ->latest()
+            ->first()
+            ?->current_status;
+    }
+
+    public function getStepCategoryAttribute(): ?string
+    {
+        return $this->steps()
+            ->latest()
+            ->first()
+            ?->step_category;
     }
 }
