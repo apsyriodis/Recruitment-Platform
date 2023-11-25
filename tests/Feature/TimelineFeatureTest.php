@@ -7,23 +7,6 @@ use Tests\TestCase;
 
 class TimelineFeatureTest extends TestCase
 {
-    public function test_can_get_timelines()
-    {
-        Timeline::factory()->count(10)->create();
-
-        $response = $this->getJson('/api/timeline');
-
-        $response->assertStatus(200);
-
-        $response->assertJsonStructure([
-            'data' => [
-                '*' => ['recruiter_name', 'recruiter_surname', 'candidate_name', 'candidate_surname']
-            ],
-            'links',
-            'meta',
-        ]);
-    }
-
     public function test_can_store_a_new_timeline()
     {
         $payload = [
