@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('step_id');
             $table->foreign('step_id')->references('id')->on('steps')->onDelete('cascade');
 
-            $table->enum('step_category', StatusCategory::values())->default(StatusCategory::PENDING);
+            $table->enum('status_category', StatusCategory::values())->default(StatusCategory::PENDING);
 
             $table->timestamps();
         });
