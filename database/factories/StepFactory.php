@@ -13,9 +13,6 @@ class StepFactory extends Factory
 
     public function definition(): array
     {
-        return [
-            'timeline_id' => Timeline::factory()->create()->id,
-            'step_category' => StepCategory::FIRST_INTERVIEW,
-        ];
+        return [];
     }
 }
