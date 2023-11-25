@@ -8,7 +8,7 @@ enum StepCategory: string
 {
     use EnumTrait;
 
-    case FIRST_INTERVIEW = '1st Interview';
+    case FIRST_INTERVIEW = 'First Interview';
     case TECH_ASSESSMENT = 'Tech Assessment';
     case OFFER = 'Offer';
 }
