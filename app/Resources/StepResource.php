@@ -12,7 +12,7 @@ class StepResource extends JsonResource
             'id' => $this->id,
             'timeline_id' => $this->timeline_id,
             'step_category' => $this->step_category,
-            'steps' => $this->steps,
+            'timeline' => $this->timeline,
             'current_status' => $this->current_status,
         ];
     }
