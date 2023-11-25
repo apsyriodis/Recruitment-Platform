@@ -18,10 +18,9 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $step_categories = StepCategory::toArray();
-        $status_categories = StatusCategory::toArray();
-        Timeline::factory(10)->create();
+        Timeline::factory(3)->create();
 
-        DB::transaction(function () use ($step_categories, $status_categories) {
+        DB::transaction(function () use ($step_categories) {
             $timeline_ids = Timeline::pluck('id');
 
             foreach ($timeline_ids as $timeline_id) {
@@ -33,7 +32,7 @@ class DatabaseSeeder extends Seeder
 
                     StepStatusHistory::factory()->create([
                         'step_id' => $step_id,
-                        'status_category' => $status_categories[$i]['title'],
+                        'status_category' => StatusCategory::COMPLETE,
                     ]);
                 }
             }
