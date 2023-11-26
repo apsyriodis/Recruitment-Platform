@@ -3,10 +3,13 @@
 namespace Tests\Feature;
 
 use App\Models\Timeline;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class TimelineFeatureTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function test_can_store_a_new_timeline()
     {
         $payload = [

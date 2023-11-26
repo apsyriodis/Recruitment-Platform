@@ -5,10 +5,13 @@ namespace Tests\Feature;
 use App\Enums\StatusCategory;
 use App\Enums\StepCategory;
 use App\Models\Timeline;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class StepFeatureTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function test_can_store_a_new_step_with_step_status_history()
     {
         $timeline = Timeline::factory()->create();
