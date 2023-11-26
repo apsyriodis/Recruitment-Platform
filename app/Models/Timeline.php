@@ -20,4 +20,19 @@ class Timeline extends Model
     {
         return $this->hasMany(Step::class);
     }
+
+    public function stepCategories(): array
+    {
+        return $this->steps
+            ->pluck('step_category')
+            ->toArray();
+    }
+
+    public function latestStepCategory(): string
+    {
+        return $this->steps()
+            ->latest()
+            ->first()
+            ->step_category;
+    }
 }
