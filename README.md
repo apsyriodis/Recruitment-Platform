@@ -26,16 +26,16 @@ make migrate
 make db:seed
 ```
 
-## Run Tests
-
-```$xslt
-make test
-```
-
 ## Address
 
 ```$xslt
 http://localhost:8000/timeline
+```
+
+## Run Tests
+
+```$xslt
+make test
 ```
 
 ## Stop Docker Containers
