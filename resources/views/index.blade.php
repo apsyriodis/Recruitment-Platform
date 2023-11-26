@@ -13,7 +13,7 @@
         <div class="timeline-container">
             @foreach ($timelines as $timeline)
                 <div class="d-flex justify-content-between mt-3">
-                    <div @if ($loop->first) @endif>
+                    <div @if ($loop->first)  @endif>
                         <h5><strong>Recruiter:</strong>
                             {{ $timeline->recruiter_name . ' ' . $timeline->recruiter_surname }}</h5>
                         <h5><strong>Candidate:</strong>
@@ -53,7 +53,7 @@
                                     <p class="my-0"><strong>Current Status Category:</strong></p>
                                     <div class="d-flex justify-content-center">
                                         <select name="current_status[{{ $step->id }}]"
-                                            class="form-control select-small-width centered-select-text"
+                                            class="form-control select-small-width centered-select-text status-select"
                                             {{ $step->current_status != 'Pending' ? 'disabled' : '' }}>
                                             @foreach ($status_categories as $status_category)
                                                 <option value="{{ $status_category['id'] }}"
@@ -150,6 +150,14 @@
                 /* Another one for Firefox */
                 -webkit-text-align-last: center;
                 /* For Safari and Chrome */
+            }
+
+            .status-select:enabled {
+                cursor: pointer;
+            }
+
+            .status-select:disabled {
+                cursor: not-allowed;
             }
         </style>
     @endsection
