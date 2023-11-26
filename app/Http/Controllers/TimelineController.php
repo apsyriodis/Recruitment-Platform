@@ -10,26 +10,30 @@ class TimelineController extends Controller
 {
     public function index()
     {
-        $timelines = Timeline::all();
+        $timelines = Timeline::latest()->get();
 
         return view('index', ['timelines' => $timelines]);
+    }
+
+    public function create()
+    {
+        return view('new-timeline');
     }
 
     public function store(Request $request)
     {
         $this->validateRequest($request);
 
-        $timeline = Timeline::create([
+        Timeline::create([
             'recruiter_name' => $request['recruiter_name'],
             'recruiter_surname' => $request['recruiter_surname'],
             'candidate_name' => $request['candidate_name'],
             'candidate_surname' => $request['candidate_surname'],
         ]);
 
-        return [
-            'message' => 'Created Successfully',
-            'entry' => new TimelineResource($timeline),
-        ];
+        session()->flash('success', 'Created Successfully!');
+
+        return redirect('/');
     }
 
     public function show(Timeline $timeline)
