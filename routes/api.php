@@ -16,8 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:sanctum')->group(function () {
-    Route::resource('timeline', TimelineController::class)->only(['index', 'show', 'store']);
-    Route::post('step', [StepController::class, 'store']);
-    Route::post('step-status-history', [StepStatusHistoryController::class, 'store']);
-// });
+Route::get('timeline', [TimelineController::class, 'show']);
+Route::post('timeline', [TimelineController::class, 'store']);
+
+Route::resource('step', StepController::class)->only(['store']);
+
+Route::post('step-status-history', [StepStatusHistoryController::class, 'store']);

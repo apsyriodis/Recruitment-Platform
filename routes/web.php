@@ -14,4 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [TimelineController::class, 'index']);
+Route::post('/', [TimelineController::class, 'store'])->name('timeline.store');
+Route::get('/', [TimelineController::class, 'index'])->name('home');
+Route::get('/new-timeline', [TimelineController::class, 'create'])->name('timeline.create');
