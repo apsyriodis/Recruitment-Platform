@@ -35,7 +35,7 @@ make test
 ## Address
 
 ```$xslt
-http://localhost:8000
+http://localhost:8000/timeline
 ```
 
 ## Stop Docker Containers
