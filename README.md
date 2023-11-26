@@ -44,7 +44,7 @@ make test
 make stop
 ```
 
-## How to access container's sh
+## Access container's sh
 
 ```$xslt
 make sh
