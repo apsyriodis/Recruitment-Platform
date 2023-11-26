@@ -38,7 +38,7 @@ class StepController extends Controller
 
         session()->flash('success', 'Step Created Successfully!');
 
-        return redirect('/timeline');
+        return redirect()->route('home');
     }
 
     private function validateRequest($request): void
