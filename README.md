@@ -18,12 +18,12 @@ cp .env.example .env
 make start
 ```
 
-## Composer install & run migrations
+## Composer install, run migrations and seed db
 
 ```$xslt
 make composer-install
-make migrate:install
 make migrate
+make db:seed
 ```
 
 ## Run DatabaseSeeder
