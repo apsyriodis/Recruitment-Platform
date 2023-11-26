@@ -1,5 +1,7 @@
 <div class="container">
-    <h2 class="text-center my-4">Timelines</h2>
+    <h2 class="text-center my-5">Timelines</h2>
+    
+    <button class="btn btn-dark float-end -mt-4">New Timeline</button>
 
     <div class="timeline-container">
         @foreach ($timelines as $timeline)
@@ -91,6 +93,10 @@
             height: 2px;
             background-color: #000;
             transform: translateY(-50%);
+        }
+
+        .-mt-4 {
+            margin-top: -45px;
         }
     </style>
 @endsection
