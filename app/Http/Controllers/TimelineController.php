@@ -42,11 +42,13 @@ class TimelineController extends Controller
 
         session()->flash('success', 'Timeline Created Successfully!');
 
-        return redirect('/timeline');
+        return redirect()->route('home');
     }
 
-    public function show(Timeline $timeline): TimelineResource
+    public function show(int $id): TimelineResource
     {
+        $timeline = Timeline::find($id);
+
         return new TimelineResource($timeline);
     }
 
