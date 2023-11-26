@@ -28,9 +28,7 @@ make db:seed
 
 ## To view the project's timelines, click the link below
 
-```
 [Timelines](http://localhost:8000/timeline)
-```
 
 ## Run Tests
 
