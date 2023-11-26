@@ -17,7 +17,6 @@ class StepController extends Controller
     {
         return view('new-step', [
             'timeline' => Timeline::find($request['timeline_id']),
-            'step_categories' => StepCategory::toArray(),
             'status_categories' => StatusCategory::toArray(),
         ]);
     }
@@ -73,7 +72,8 @@ class StepController extends Controller
             ], 422);
         }
 
-        if (in_array($request['step_category'], $timeline->steps->pluck('step_category')->toArray())) {
+
+        if (in_array($request['step_category'], $timeline->stepCategories())) {
             return response()->json([
                 'message' => 'This step has already been created for this timeline.'
             ], 422);
