@@ -25,7 +25,7 @@ class StepStatusHistoryController extends Controller
         ];
     }
 
-    public function validateRequest($request): void
+    private function validateRequest($request): void
     {
         $request->validate([
             'step_id' => ['required', 'exists:steps,id'],

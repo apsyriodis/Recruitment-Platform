@@ -50,7 +50,7 @@ class TimelineController extends Controller
         return new TimelineResource($timeline);
     }
 
-    public function validateRequest($request): void
+    private function validateRequest($request): void
     {
         $request->validate([
             'recruiter_name' => ['required'],

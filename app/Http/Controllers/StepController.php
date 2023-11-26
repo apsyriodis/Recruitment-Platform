@@ -41,7 +41,7 @@ class StepController extends Controller
         return redirect('/timeline');
     }
 
-    public function validateRequest($request): void
+    private function validateRequest($request): void
     {
         $request->validate([
             'timeline_id' => ['required', 'exists:timelines,id'],
