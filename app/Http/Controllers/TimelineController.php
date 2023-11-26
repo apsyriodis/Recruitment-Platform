@@ -54,12 +54,14 @@ class TimelineController extends Controller
 
     private function validateRequest($request): void
     {
-        $request->validate([
-            'recruiter_name' => ['required'],
-            'recruiter_surname' => ['required'],
-            'candidate_name' => ['required'],
-            'candidate_surname' => ['required'],
-        ]);
+        $request->validate(
+            [
+                'recruiter_name' => ['required', 'regex:/^[a-zA-Z\s\-\' ]+$/'],
+                'recruiter_surname' => ['required', 'regex:/^[a-zA-Z\s\-\' ]+$/'],
+                'candidate_name' => ['required', 'regex:/^[a-zA-Z\s\-\' ]+$/'],
+                'candidate_surname' => ['required', 'regex:/^[a-zA-Z\s\-\' ]+$/'],
+            ]
+        );
     }
 
     private function createFirstStep($timeline_id): void
