@@ -47,7 +47,7 @@
             padding: 15px;
             border-radius: 5px;
             margin-bottom: 15px;
-            background-color: #fff;
+            background-color: #ffffff;
         }
 
         .timeline {

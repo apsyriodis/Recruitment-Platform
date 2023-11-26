@@ -5,5 +5,5 @@
 @endsection
 
 @section('content')
-    @include ('_timeline')
+    @include ('_timelines')
 @endsection
