@@ -26,10 +26,10 @@ make migrate
 make db:seed
 ```
 
-## Address
+## To view the project's timelines, click the link below
 
 ```$xslt
-http://localhost:8000/timeline
+[Timelines](http://localhost:8000/timeline)
 ```
 
 ## Run Tests
