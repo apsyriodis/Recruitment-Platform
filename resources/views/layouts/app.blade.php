@@ -22,6 +22,12 @@
 </head>
 
 <body class="bg-gray-50 pl-6">
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
     @yield('content')
 
     @yield('scripts')
