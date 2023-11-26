@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="container">
-        <h1 class="d-flex justify-content-center my-5">Create a Step for the Timeline #{{$timeline->id}}</h1>
+        <h1 class="d-flex justify-content-center my-5">Create a Step for the Timeline #{{ $timeline->id }}</h1>
 
         <form class="form-container pb-5 pt-4" action="{{ route('step.store', ['timeline_id' => $timeline->id]) }}"
             method="POST">
@@ -15,11 +15,13 @@
             <div class="form-group my-3">
                 <label for="step_category">Step Category:</label>
                 <select class="form-control" id="step_category" name="step_category">
-                    @foreach ($step_categories as $step_category)
-                        @if (!in_array($step_category['title'], $timeline->steps->pluck('step_category')->toArray()))
-                            <option value="{{ $step_category['id'] }}">{{ $step_category['title'] }}</option>
-                        @endif
-                    @endforeach
+                    @if ($timeline->latestStepCategory() == App\Enums\StepCategory::FIRST_INTERVIEW->value)
+                        <option value="{{ App\Enums\StepCategory::TECH_ASSESSMENT->value }}">
+                            {{ App\Enums\StepCategory::TECH_ASSESSMENT->value }}</option>
+                    @else
+                        <option value="{{ App\Enums\StepCategory::OFFER->value }}">
+                            {{ App\Enums\StepCategory::OFFER->value }}</option>
+                    @endif
                 </select>
             </div>
 
