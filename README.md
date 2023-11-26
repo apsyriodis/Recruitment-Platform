@@ -1,26 +1,27 @@
+
 # Setup
 
 ## Change from current directory into the project directory
 
-```ssh
+```bash
 cd recruitment-platform
 ```
 
 ## Create .env file
 
-```$xslt
+```bash
 cp .env.example .env
 ```
 
 ## Start Docker containers
 
-```$xslt
+```bash
 make start
 ```
 
 ## Composer install, run migrations and seed db
 
-```$xslt
+```bash
 make composer-install
 make migrate
 make db:seed
@@ -32,18 +33,18 @@ make db:seed
 
 ## Run Tests
 
-```$xslt
+```bash
 make test
 ```
 
 ## Stop Docker Containers
 
-```$xslt
+```bash
 make stop
 ```
 
 ## Access container's sh
 
-```$xslt
+```bash
 make sh
 ```
