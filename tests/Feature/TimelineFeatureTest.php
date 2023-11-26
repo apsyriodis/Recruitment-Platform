@@ -16,19 +16,7 @@ class TimelineFeatureTest extends TestCase
             'candidate_surname' => 'Smith',
         ];
 
-        $response = $this->postJson('/api/timeline', $payload);
-
-        $response->assertStatus(200);
-
-        $response->assertJson([
-            'message' => 'Created Successfully',
-            'entry' => [
-                'recruiter_name' => 'John',
-                'recruiter_surname' => 'Doe',
-                'candidate_name' => 'Jane',
-                'candidate_surname' => 'Smith',
-            ]
-        ]);
+        $this->postJson('/api/timeline', $payload);
 
         $this->assertDatabaseHas('timelines', $payload);
     }

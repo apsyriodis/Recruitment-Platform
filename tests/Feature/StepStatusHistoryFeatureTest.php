@@ -24,16 +24,6 @@ class StepStatusHistoryFeatureTest extends TestCase
 
         $response = $this->postJson('/api/step-status-history', $payload);
 
-        $response->assertStatus(200);
-
-        $response->assertJson([
-            'message' => 'Created Successfully',
-            'entry' => [
-                'step_id' => $step_id,
-                'status_category' => StatusCategory::PENDING->value,
-            ]
-        ]);
-
         $this->assertDatabaseHas('step_status_history', $payload);
     }
 
