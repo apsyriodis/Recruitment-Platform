@@ -1,4 +1,3 @@
-
 # Setup
 
 ## Change from current directory into the project directory
