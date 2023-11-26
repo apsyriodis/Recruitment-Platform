@@ -1,6 +1,6 @@
 # Setup
 
-## Change current directory into the project directory
+## Change from current directory into the project directory
 
 ```ssh
 cd recruitment-platform
