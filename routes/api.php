@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('timeline', [TimelineController::class, 'show']);
+Route::get('timeline/{id}', [TimelineController::class, 'show']);
 Route::post('timeline', [TimelineController::class, 'store']);
 
-Route::resource('step', StepController::class)->only(['store']);
+Route::post('step/{timeline_id}', [StepController::class, 'store']);
 
 Route::post('step-status-history', [StepStatusHistoryController::class, 'store']);
