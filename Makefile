@@ -1,29 +1,29 @@
 sh:
-	docker-compose exec app sh
+	sudo docker-compose exec app sh
 
 start:
-	docker-compose up -d
+	sudo docker-compose up -d
 
 stop:
-	docker-compose down
+	sudo docker-compose down
 
 restart:
-	docker-compose restart
+	sudo docker-compose restart
 
 migrate\:install:
-	docker-compose exec app php artisan migrate:install
+	sudo docker-compose exec app php artisan migrate:install
 
 migrate:
-	docker-compose exec app php artisan migrate
+	sudo docker-compose exec app php artisan migrate
 
 migrate\:rollback:
-	docker-compose exec app php artisan migrate:rollback
+	sudo docker-compose exec app php artisan migrate:rollback
 
 test:
-	docker-compose exec app vendor/bin/phpunit tests
+	sudo docker-compose exec app vendor/bin/phpunit tests
 
 composer-install:
-	docker-compose exec app composer install
+	sudo docker-compose exec app composer install
 
 db\:seed:
-	docker-compose exec app php artisan db:seed
+	sudo docker-compose exec app php artisan db:seed
