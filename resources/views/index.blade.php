@@ -18,9 +18,20 @@
                     <h5><strong>Candidate:</strong>
                         {{ $timeline->candidate_name . ' ' . $timeline->candidate_surname }}</h5>
                 </div>
+
+                @if (count($timeline->steps) < 3 && $timeline->steps()->latest()->first()->current_status == App\Enums\StatusCategory::COMPLETE->value)
+                    <a href="{{ route('step.create', $timeline->id) }}" class="btn btn-dark -mb-4">New Step</a>
+                @endif
+
                 <div class="row text-center justify-content-center mb-5">
                     <div class="col-xl-6 col-lg-8">
-                        <h2 class="font-weight-bold mb-4">Timeline</h2>
+                        <h3 class="font-weight-bold mb-4">
+                            @if (count($timeline->steps))
+                                Timeline
+                            @else
+                                No steps have been created yet...
+                            @endif
+                        </h3>
                     </div>
 
                     <div class="timeline">
@@ -35,12 +46,25 @@
 
                                 <div>
                                     <p class="my-0"><strong>Current Status Category:</strong></p>
-                                    <span>{{ $step->current_status }}</span>
+                                    <div class="d-flex justify-content-center">
+                                        <select name="current_status[{{ $step->id }}]"
+                                            class="form-control select-small-width centered-select-text"
+                                            {{ $step->current_status != 'Pending' ? 'disabled' : '' }}>
+                                            @foreach ($status_categories as $status_category)
+                                                <option value="{{ $status_category['id'] }}"
+                                                    {{ $status_category['title'] == $step->current_status ? 'selected' : '' }}>
+                                                    {{ $status_category['title'] }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         @endforeach
+
                     </div>
                 </div>
+
                 @if (!$loop->last)
                     <hr class='my-5'>
                 @endif
@@ -104,5 +128,54 @@
             .-mt-4 {
                 margin-top: -45px;
             }
+
+            .-mb-4 {
+                margin-bottom: -45px;
+            }
+
+            .select-small-width {
+                width: 101px !important;
+            }
+
+            .centered-select-text {
+                text-align: center;
+                text-align-last: center;
+                /* For Firefox */
+                -moz-text-align-last: center;
+                /* Another one for Firefox */
+                -webkit-text-align-last: center;
+                /* For Safari and Chrome */
+            }
         </style>
+    @endsection
+
+    @section('scripts')
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelectorAll('select[name^="current_status"]').forEach(function(selectElement) {
+                    selectElement.addEventListener('change', function() {
+                        var stepId = this.name.match(/\d+/)[0];
+                        var newStatus = this.value;
+
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('POST', '{{ route('status.store') }}', true);
+                        xhr.setRequestHeader('Content-Type', 'application/json');
+                        xhr.setRequestHeader('X-CSRF-TOKEN', '{{ csrf_token() }}');
+
+                        console.log(xhr);
+                        xhr.onreadystatechange = function() {
+                            if (xhr.readyState == 4 && xhr.status == 200) {
+                                alert('Status updated successfully');
+                                window.location.reload();
+                            }
+                        };
+
+                        xhr.send(JSON.stringify({
+                            step_id: stepId,
+                            status_category: newStatus
+                        }));
+                    });
+                });
+            });
+        </script>
     @endsection
