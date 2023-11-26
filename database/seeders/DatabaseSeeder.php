@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $step_categories = StepCategory::toArray();
-        Timeline::factory(3)->create();
+        Timeline::factory(1)->create();
 
         DB::transaction(function () use ($step_categories) {
             $timeline_ids = Timeline::pluck('id');
