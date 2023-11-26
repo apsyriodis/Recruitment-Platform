@@ -12,14 +12,19 @@
 
         <div class="timeline-container">
             @foreach ($timelines as $timeline)
-                <div @if ($loop->first) class="mt-4" @endif>
-                    <h5><strong>Recruiter:</strong>
-                        {{ $timeline->recruiter_name . ' ' . $timeline->recruiter_surname }}</h5>
-                    <h5><strong>Candidate:</strong>
-                        {{ $timeline->candidate_name . ' ' . $timeline->candidate_surname }}</h5>
+                <div class="d-flex justify-content-between mt-3">
+                    <div @if ($loop->first) @endif>
+                        <h5><strong>Recruiter:</strong>
+                            {{ $timeline->recruiter_name . ' ' . $timeline->recruiter_surname }}</h5>
+                        <h5><strong>Candidate:</strong>
+                            {{ $timeline->candidate_name . ' ' . $timeline->candidate_surname }}</h5>
+                    </div>
+                    <h5><strong>#{{ $timeline->id }}</strong></h5>
                 </div>
 
-                @if (count($timeline->steps) < 3 && $timeline->steps()->latest()->first()->current_status == App\Enums\StatusCategory::COMPLETE->value)
+
+                @if (count($timeline->steps) < 3 &&
+                        $timeline->steps()->latest()->first()->current_status == App\Enums\StatusCategory::COMPLETE->value)
                     <a href="{{ route('step.create', $timeline->id) }}" class="btn btn-dark -mb-4">New Step</a>
                 @endif
 

@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="container">
-        <h1 class="d-flex justify-content-center my-5">Add Steps to Timeline</h1>
+        <h1 class="d-flex justify-content-center my-5">Create a Step for the Timeline #{{$timeline->id}}</h1>
 
         <form class="form-container pb-5 pt-4" action="{{ route('step.store', ['timeline_id' => $timeline->id]) }}"
             method="POST">
