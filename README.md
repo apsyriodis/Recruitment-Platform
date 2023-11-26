@@ -26,12 +26,6 @@ make migrate
 make db:seed
 ```
 
-## Run DatabaseSeeder
-
-```$xslt
-make db:seed
-```
-
 ## Run Tests
 
 ```$xslt
