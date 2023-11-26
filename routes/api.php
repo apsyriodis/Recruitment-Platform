@@ -21,4 +21,4 @@ Route::post('timeline', [TimelineController::class, 'store']);
 
 Route::post('step/{timeline_id}', [StepController::class, 'store']);
 
-Route::post('step-status-history', [StepStatusHistoryController::class, 'store']);
+Route::post('step-status-history', [StepStatusHistoryController::class, 'store'])->name('status.store');
