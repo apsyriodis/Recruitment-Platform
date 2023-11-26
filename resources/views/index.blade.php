@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('title')
-    <title>Recruitment App</title>
+    <title>Recruitment Platform</title>
 @endsection
 
 @section('content')
     <div class="container">
-        <h1 class="text-center my-5">Timelines</h1>
+        <h1 class="text-center my-5">Recruitment Platform</h1>
 
         <a href="{{ route('timeline.create') }}" class="btn btn-dark float-end -mt-4">New Timeline</a>
 

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    <title>New Timeline</title>
+@endsection
+
 @section('content')
     <div class="container">
         <h1 class="d-flex justify-content-center my-5">Create Timeline</h1>

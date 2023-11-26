@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    <title>New Step</title>
+@endsection
+
 @section('content')
     <div class="container">
         <h1 class="d-flex justify-content-center my-5">Add Steps to Timeline</h1>
