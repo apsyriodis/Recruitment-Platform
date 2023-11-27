@@ -1,3 +1,10 @@
+# Prerequisites
+Before running this application, ensure you have docker-compose installed.
+To check if you have Docker Compose installed, run the following command in your terminal:
+```bash
+docker-compose --version
+```
+
 # Setup
 
 ## Change from current directory into the project directory
